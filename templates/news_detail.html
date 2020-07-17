@@ -1,0 +1,33 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    新闻
+{% endblock %}
+
+{% block outside_link_css %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="margin-top: 50px; font-size: 20px;">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2" style="text-align: left">
+                {% autoescape off %}
+                    {{ news.content }}
+                {% endautoescape %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_link %}
+    <script>
+        $(function () {
+            $(".news_link").parent().children(".active").removeClass("active");
+            $(".news_link").addClass("active");
+        });
+    </script>
+{% endblock %}

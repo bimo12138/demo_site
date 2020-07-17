@@ -1,0 +1,50 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    本地要闻
+{% endblock %}
+
+{% block outside_link_css %}
+    <style>
+        ul li {
+            list-style: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="background: url({% static "img/news_top.png" %}); background-size: cover; height: 300px; margin-top: 50px;">
+
+    </div>
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-lg-8">
+                <div>
+                    {% for new in news %}
+                        <h1><a href="/news/{{ new.id }}">{{ new.title }}</a></h1>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-lg-4" style="font-size: 20px;">
+                <ul>
+                    <li><a href="{% url "news:index" %}">集团动态</a></li>
+                    <li><a href="{% url "news:location" %}">本地要闻</a></li>
+                    <li><a href="{% url "news:videos" %}">视频中心</a></li>
+                    <li><a href="{% url "news:industry" %}">行业资讯</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_link %}
+    <script>
+        $(function () {
+            $(".news_link").parent().children(".active").removeClass("active");
+            $(".news_link").addClass("active");
+        });
+    </script>
+{% endblock %}

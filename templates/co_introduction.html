@@ -1,0 +1,93 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    公司介绍
+{% endblock %}
+
+{% block outside_link_css %}
+    <style>
+        .content p img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="background: url({% static "img/show_top.png" %}); background-size: cover; height: 300px; margin-top: 50px;">
+
+    </div>
+
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-lg-2" style="position: fixed; top: 60%; box-shadow: 4px 6px 10px  #86957f">
+                <ul style="font-size: 20px;">
+                    <h3>走进农投</h3>
+                    <li class="active">
+                        <a href="#introduction">企业简介</a> <br>
+                    </li>
+                    <li>
+                        <a href="#organization">组织架构</a> <br>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pull-right col-lg-10">
+                {% if co_introduction %}
+
+                    <h1 style="text-align: center">{{ co_introduction.title }}</h1>
+                    <div class="content" style="font-size: 20px;" id="introduction">
+                        {% autoescape off %}
+                            {{ co_introduction.content }}
+                        {% endautoescape %}
+                    </div>
+
+                {% else %}
+                    <div class="row">
+                        <h1 style="text-align: center" id="introduction">抱歉！当前信息未上传！请稍后再试！！！</h1>
+                    </div>
+
+                {% endif %}
+
+
+                {% if organization %}
+                    <h1 style="text-align: center">{{ organization.title }}</h1>
+                    <div class="content" style="font-size: 20px;" id="organization">
+                        {% autoescape off %}
+                            {{ organization.content }}
+                        {% endautoescape %}
+                    </div>
+                {% else %}
+                    <div class="row">
+                        <h1 style="text-align: center" id="organization">抱歉！当前信息未上传！请稍后再试！！！</h1>
+                    </div>
+                {% endif %}
+                {% if subsidiaries %}
+                    {% for subsidiary in subsidiaries %}
+                        <h1 style="text-align: center">{{ subsidiary.subsidiary_name }}</h1>
+                        <div class="content" style="font-size: 20px;" id="introduction">
+                            {% autoescape off %}
+                                {{ subsidiary.subsidiary_desc }}
+                            {% endautoescape %}
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_link %}
+    <script>
+        $(function () {
+            $(".nav .active").removeClass("active");
+            $(".went_to").addClass("active");
+        });
+
+    </script>
+{% endblock %}

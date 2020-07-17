@@ -1,0 +1,48 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    下属企业
+{% endblock %}
+
+{% block outside_link_css %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="row">
+            {% if subsdiaries %}
+                <div class="col-lg-3 visible-lg-block">
+                    <ul>
+                        {% for subsdiary in subsdiaries %}
+                            <li>{{ subsdiaries.subsdiaries_name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-8">
+                    {% for subsdiary in subsdiaries %}
+                        {{ subsdiaries.subsdiaries_desc }}
+                    {% endfor %}
+                </div>
+                <div class="col-lg-8">
+
+                </div>
+            {% else %}
+                <h1 style="text-align: center" id="introduction">抱歉！当前信息未上传！请稍后再试！！！</h1>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_link %}
+    <script>
+        $(function () {
+            $(".nav .active").removeClass("active");
+            $(".went_to").addClass("active");
+        })
+    </script>
+{% endblock %}

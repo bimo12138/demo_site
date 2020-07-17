@@ -1,0 +1,8 @@
+Django==2.2.1
+django-ckeditor==5.7.0
+django-js-asset==1.2.2
+django-redis==4.10.0
+mysqlclient==1.4.2.post1
+pytz==2019.1
+redis==3.2.1
+sqlparse==0.3.0

@@ -1,0 +1,251 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}
+    水城农投集团
+{% endblock %}
+
+{% block outside_link_css %}
+    <style>
+        body {
+            background: white;
+        }
+        ul li {
+            list-style: none;
+            display: inline-flex;
+        }
+        .news {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+        .news span {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .news span:hover {
+            background: #3f4e41;
+            color: white;
+        }
+        .news_active {
+            font-size: 28px;
+            background: #3f4e41;
+            color: white;
+        }
+        .news_body_action {
+            display: block;
+        }
+        .news_body_hidden {
+            display: none;
+        }
+        .show_img {
+            width: 100%;
+            height: 150px;
+        }
+        .show_body {
+            width: 100%;
+            height: 200px;
+        }
+        .show_hover:hover {
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .8);
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div id="carousel_demo" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel_demo" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel_demo" data-slide-to="1"></li>
+        <li data-target="#carousel_demo" data-slide-to="2"></li>
+
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="{% static "img/show_1.png" %}" alt="猕猴桃">
+        </div>
+        <div class="item">
+            <img src="{% static "img/show_2.png" %}" alt="茶叶">
+        </div>
+        <div class="item">
+            <img src="{% static "img/show_3.png" %}" alt="茶叶">
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div id="carousel_demo_news" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner new_image_show" role="listbox">
+                    {% for news_image in news_images %}
+                        <div class="item">
+                            <img src="/media/{{ news_image.img }}" alt="{{ news_image.img_desc }}" width="100%">
+                            <div class="col-lg-12" style="position: absolute; bottom: 0px; font-size: 18px; background: white; opacity: 0.8">
+                                <p class="img_content" style="line-height: 35px;">{{ news_image.img_desc }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 news">
+            <ul class="news_title_ul">
+                <li class="col-lg-2 news_active"><span>集团动态</span></li>
+                <li class="col-lg-2"><span>通知公告</span></li>
+                <li class="col-lg-2"><span>本地要闻</span></li>
+                <li class="col-lg-2"><span>视频中心</span></li>
+                <li class="col-lg-2"><span><a href="{% url "news:index" %}">更多 >></a></span></li>
+            </ul>
+            <div class="news_content news_body_action">
+                <ul style="margin-top: 50px;">
+                    <hr>
+                    {% for news in news %}
+                        <li><a href="/news/{{ news.id }}">{{ news.title }}</a></li>
+                        <hr>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="actions_content news_body_hidden">
+                <ul style="margin-top: 50px">
+                    <hr>
+                    {% for action in actions %}
+                        <li><a href="/news/{{ action.id }}">{{ action.title }}</a></li>
+                        <hr>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="industry_news news_body_hidden">
+                <ul style="margin-top: 50px">
+                    <hr>
+                    {% for industry_new in industry_news %}
+                         <li><a href="/news/{{ industry_new.id }}">{{ industry_new.title }}</a></li>
+                         <hr>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="video_center news_body_hidden" style="margin-top: 5px; margin-bottom: 5px;">
+                <video src="http://192.168.155.41:8000/media/videos/4399.mp4" class="center-block" width="75%" height="75%" controls></video>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="container">
+    <div id="carousel_demo_short" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="{% static "img/short_show_1.png" %}" alt="猕猴桃" style="width: 100%">
+        </div>
+        <div class="item">
+            <img src="{% static "img/short_show_1.png" %}" alt="茶叶" style="width: 100%">
+        </div>
+    </div>
+</div>
+    </div>
+
+
+    <div class="container">
+        <div class="row" style="overflow: hidden;">
+            <div class="col-lg-12">
+                <h1 class="col-lg-4">下属企业</h1>
+                <h3 class="col-lg-offset-4 pull-right">更多 > </h3>
+            </div>
+            <div class="col-lg-12 show_content" style="margin-bottom: 10px; display: -webkit-box;">
+                <div class="col-lg-4" style="text-align: center;">
+                    <div class="center-block show_hover" style="width: 90%">
+                        <div class="show_img">
+
+                        </div>
+                        <div class="show_body" style="background: #DDE6ED">
+
+                        </div>
+                        <div class="detail_success_btn" style="height: 40px;">
+                            <h3>了解更多 &rarr;</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" style="text-align: center;">
+                    <div class="center-block show_hover" style="width: 90%">
+                        <div class="show_img">
+
+                        </div>
+                        <div class="show_body" style="background: #DDE6ED">
+
+                        </div>
+                        <div class="detail_success_btn" style="height: 40px;">
+                            <h3>了解更多 &rarr;</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" style="text-align: center;">
+                    <div class="center-block show_hover" style="width: 90%">
+                        <div class="show_img">
+
+                        </div>
+                        <div class="show_body" style="background: #DDE6ED">
+
+                        </div>
+                        <div class="detail_success_btn" style="height: 40px;">
+                            <h3>了解更多 &rarr;</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" style="text-align: center;">
+                    <div class="center-block show_hover" style="width: 90%">
+                        <div class="show_img">
+
+                        </div>
+                        <div class="show_body" style="background: #DDE6ED">
+
+                        </div>
+                        <div class="detail_success_btn" style="height: 40px;">
+                            <h3>了解更多 &rarr;</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" style="text-align: center;">
+                    <div class="center-block show_hover" style="width: 90%">
+                        <div class="show_img">
+
+                        </div>
+                        <div class="show_body" style="background: #DDE6ED">
+
+                        </div>
+                        <div class="detail_success_btn" style="height: 40px;">
+                            <h3>了解更多 &rarr;</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="col-lg-4">党政建设</h1>
+                <h3 class="col-lg-offset-4 pull-right">查看更多 &rsaquo;</h3>
+            </div>
+            <div class="col-lg-12 party_content" style="margin-bottom: 10px;">
+                <div class="col-lg-5" style="background-color: #DDE6ED;">
+                    <div class="col-lg-12" style="height: 200px;"></div>
+                    <div class="col-lg-12" style="height: 200px;"></div>
+                    <div class="col-lg-12" style="height: 100px"><h3>更多 &rarr;</h3></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="col-lg-12" style="height: 100px; background: #e3e3e3">
+
+                    </div>
+                    <div class="col-lg-12" style="height: 100px; background: #f06e57">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js_link %}
+    <script src="{% static "js/index.js" %}"></script>
+{% endblock %}

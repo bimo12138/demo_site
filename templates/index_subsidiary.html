@@ -1,0 +1,31 @@
+<!-- author is 13716 -->
+{% extends "index_base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ subsidiary.subsidiary_name }}
+{% endblock %}
+
+{% block outside_link_css %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="background: url({% static "img/subsidiary_top.png" %}); background-size: cover; height: 300px; margin-top: 50px;">
+
+    </div>
+    <div class="container-fluid" style="margin-top: 50px; font-size: 20px;">
+        <div class="row">
+            <h1 style="text-align: center">{{ subsidiary.subsidiary_name }}</h1>
+            <div class="col-lg-8 col-lg-offset-2" style="text-align: left">
+                {% autoescape off %}
+                    {{ subsidiary.subsidiary_desc }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_link %}
+
+{% endblock %}

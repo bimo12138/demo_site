@@ -1,0 +1,224 @@
+<!-- author is 13716 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %}</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/sweetalert.css" %}">
+    <style>
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .went_to:hover div{
+             display: block;
+        }
+        .news_link:hover div {
+            display: block;
+        }
+        .party_link:hover div {
+            display: block;
+        }
+        .account:hover div {
+            display: block;
+        }
+        .basis_link:hover div {
+            display: block;
+        }
+        .product_link:hover div {
+            display: block;
+        }
+        .server_online_link:hover div {
+            display: block;
+        }
+        .subsidiaries_link:hover div {
+            display: block;
+        }
+    </style>
+    {% block outside_link_css %}
+
+    {% endblock %}
+</head>
+<body data-spy="scroll">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background: rgba(255, 255, 255, 0.5); font-size: 20px;">
+
+        <div class="container-fluid">
+            <div class="navbar-header col-lg-3 col-md-9">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand col-lg-12 col-md-12 col-xs-8" href="#" style="background-image: url({% static "img/logo.gif" %}); background-size: 100% 50px;"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{% url "index:index" %}">首页</a></li>
+                    <li class="went_to">
+                        <a href="#" class="went_to_btn" data-toggle="dropdown">走进农投</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="/welcome#introduction">企业简介</a> <br>
+                            <a href="/welcome#organization">组织架构</a> <br>
+                        </div>
+                    </li>
+                    <li class="news_link">
+                        <a href="{% url "news:index" %}" class="news_link_btn" data-toggle="dropdown">新闻中心</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="{% url "news:index" %}">集团动态</a> <br>
+                            <a href="{% url "news:location" %}">本地要闻</a> <br>
+                            <a href="{% url "news:videos" %}">视频中心</a> <br>
+                            <a href="{% url "news:industry" %}">通知公告</a>
+                        </div>
+                    </li>
+                    <li class="party_link">
+                        <a href="#" class="party_link_btn" data-toggle="dropdown">党政建设</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="#">扶贫攻坚</a> <br>
+                            <a href="#">党团活动</a> <br>
+                            <a href="#">普法宣传</a>
+                        </div>
+                    </li>
+                    <li class="basis_link">
+                        <a href="#">基地展示</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="#">猕猴桃基地</a> <br>
+                            <a href="#">茶叶基地</a> <br>
+                            <a href="#">蜂蜜基地</a> <br>
+                            <a href="#">厂房加工</a> <br>
+                            <a href="#">冷冻室</a>
+                        </div>
+                    </li>
+                    <li class="subsidiaries_link">
+                        <a href="#">下属企业</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="{% url "index:subsidiary_detail" '宏兴公司'  %}">宏兴公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '蜂业公司' %}">蜂业公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '宏景公司' %}">宏景公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '茶叶公司' %}">茶叶公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '农林投公司' %}">农林投公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '曦源公司' %}">曦源公司</a> <br>
+                            <a href="{% url "index:subsidiary_detail" '销售公司' %}">销售公司</a>
+                        </div>
+                    </li>
+                    <li class="product_link">
+                        <a href="#">产品展示</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="#">茶叶</a> <br>
+                            <a href="#">猕猴桃</a> <br>
+                            <a href="#">果酒</a> <br>
+                            <a href="#">蜂蜜</a> <br>
+                            <a href="#">农副机械</a> <br>
+                            <a href="#">农业机械</a>
+                        </div>
+                    </li>
+                    <li class="server_online_link">
+                        <a href="#">在线服务</a>
+                        <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 110px; font-size: 18px;">
+                            <a href="#">在线服务</a> <br>
+                            <a href="#">招聘发布</a> <br>
+                            <a href="#">网点分布</a> <br>
+                            <a href="#">联系我们</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="line-height: 50px;">
+                            <a href="tel: xxxxxxx">xxxxxxx</a>
+                        </span>
+                    </li>
+                    <li style="margin-left: 20px;">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" style="line-height: 50px"></span>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="account" style="line-height: 50px; margin-left: 10px;">
+                            <a href="#" class="has_logo_btn" data-toggle="dropdown" style="margin-left: 20px;">{{ user.username }}</a>
+                            <div class="dropdown-menu" style="text-align: center; opacity: 1; min-width: 150px; font-size: 18px;">
+                                <a href="#">个人信息设置</a> <br>
+                                <a href="/logout">注销</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="login">
+                            <a href="{% url "index:login" %}">登陆</a>
+                        </li>
+                        <li class="register">
+                            <a href="{% url "index:register" %}">注册</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="container-fluid" style="background: #00451e; height: 100px;">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background: #25000a; height: 40px;">
+        <div class="container">
+            <div class="row">
+                <p style="font-size: 20px; text-align: center; color: white;">&copy;2019&ensp;版权所有, 水城农投集团</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static "js/ajaxSetting.js" %}"></script>
+    <script src="{% static "js/sweetalert.min.js" %}"></script>
+    <script src="{% static "js/alertjs.js" %}"></script>
+    <script>
+        $(function () {
+            $(".went_to div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".went_to").addClass("active");
+            });
+            $(".news_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".news_link").addClass("active");
+            });
+            $(".party_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".party_link").addClass("active");
+            });
+            $(".basis_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".basis_link").addClass("active");
+            });
+            $(".product_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".product_link").addClass("active");
+            });
+            $(".server_online_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".server_online_link").addClass("active");
+            });
+            $(".subsidiaries_link div a").click(function () {
+                $(".nav .active").removeClass("active");
+                $(".subsidiaries_link").addClass("active");
+            });
+        })
+    </script>
+    {% block js_link %}
+
+    {% endblock %}
+</body>
+</html>
